@@ -1,6 +1,6 @@
 FROM alpine:3.20 AS builder
 
-RUN apk add --no-cache cmake make gcc musl-dev git
+RUN apk add --no-cache cmake make gcc musl-dev
 
 WORKDIR /src
 COPY . .
@@ -10,7 +10,6 @@ RUN LIBGOMP=$(gcc -print-file-name=libgomp.a) && \
     cd /build && \
     cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_C_FLAGS="-fopenmp" \
       -DOpenMP_C_FLAGS="-fopenmp" \
       -DOpenMP_C_LIB_NAMES="gomp" \
       -DOpenMP_gomp_LIBRARY="$LIBGOMP" \
