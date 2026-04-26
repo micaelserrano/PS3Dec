@@ -225,10 +225,9 @@ void open_input(FILE** in_file, char* in)
 
 void progress(char* title)
 {
+  fprintf(stderr, "%s\n", title);
 #ifdef _WIN32
   SetConsoleTitle(title);
-#else
-  /*printf("%c]0;%s%c", '\033', title, '\007'); glitches output*/
 #endif
 }
 
