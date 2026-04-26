@@ -1,6 +1,6 @@
 FROM alpine:3.20 AS builder
 
-RUN apk add --no-cache cmake make gcc musl-dev
+RUN apk add --no-cache cmake make gcc musl-dev git
 
 WORKDIR /src
 COPY . .
