@@ -226,6 +226,7 @@ void open_input(FILE** in_file, char* in)
 void progress(char* title)
 {
   fprintf(stderr, "%s\n", title);
+  fflush(stderr);
 #ifdef _WIN32
   SetConsoleTitle(title);
 #endif
