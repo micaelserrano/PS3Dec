@@ -1,9 +1,30 @@
 # PS3Dec
+
+## Docker Image
+
+Pre-built multi-architecture images (amd64 + arm64) are published to GitHub Container Registry:
+
+```
+ghcr.io/micaelserrano/ps3dec:latest
+```
+
+Pull and run:
+```bash
+docker pull ghcr.io/micaelserrano/ps3dec:latest
+docker run --rm -v /path/to/isos:/data ghcr.io/micaelserrano/ps3dec:latest d key <disc_key> /data/input.iso /data/output.iso
+```
+
+Copy the binary into another image:
+```dockerfile
+COPY --from=ghcr.io/micaelserrano/ps3dec:latest /PS3Dec /usr/local/bin/PS3Dec
+```
+
+---
+
 An alternative ISO encryptor/decryptor for PS3 disc images by red_meryl,
 originally posted on the [k3y forums](https://web.archive.org/web/20140326142553/http://k3yforums.com/viewtopic.php?f=31&t=10460).
 
-This is a slightly modified version of PS3Dec r5, using statically-linked
-mbedTLS for AES encryption/decryption and CMake as the build system.
+This is a fork of [al3xtjames/PS3Dec](https://github.com/al3xtjames/PS3Dec), a slightly modified version of PS3Dec r5 using statically-linked mbedTLS for AES encryption/decryption and CMake as the build system. This fork adds a Docker image with multi-architecture support.
 
 ### Original README
 ```
